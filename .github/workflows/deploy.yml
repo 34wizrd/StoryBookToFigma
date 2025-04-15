@@ -24,10 +24,8 @@ jobs:
       - name: Build Storybook
         run: npm run build-storybook
 
-      - name: Deploy to Netlify using CLI
-        uses: netlify/actions/cli@v1 # ✅ THIS is correct
-        with:
-          args: deploy --dir=storybook-static --prod
+      - name: Deploy to Netlify
+        run: npx netlify deploy --dir=storybook-static --prod
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
